@@ -7,5 +7,6 @@
     <property name="Login" />
     <property name="FullName" />
     <property name="Password" />
+    <property name="Level" />
   </class>
 </hibernate-mapping>

@@ -54,11 +54,13 @@ namespace TestingNHiber
             // Теперь вытащим определенную запись из таблицы и обновим ее
             tr = session.BeginTransaction();
             Console.WriteLine("There are user with id 3: ");
-            var oneuser = session.Get<User>(3);
+            var oneuser = session.Get<User>(2);
             Console.WriteLine(oneuser.ID + " " + oneuser.LOGIN + " " + oneuser.FULLNAME + " " + oneuser.PASSWORD);
             Console.WriteLine("Add to end of fullname of {0} some characters ' - best user': ", oneuser.LOGIN);
             oneuser.FULLNAME += " - best user";
+            oneuser.LEVEL = User.UserLevel.Senior;
             session.Update(oneuser);
+            // session.Delete(oneuser); // if we need to delete founded record
 
             tr.Commit();
 

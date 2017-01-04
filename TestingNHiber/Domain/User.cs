@@ -8,6 +8,7 @@ namespace TestingNHiber.Domain
         private string Login { get; set; }
         private string FullName { get; set; }
         private string Password { get; set; }
+        private UserLevel Level { get; set; }
 
         public virtual int ID
         {
@@ -31,6 +32,19 @@ namespace TestingNHiber.Domain
         {
             get { return Password; }
             set { Password = value; }
+        }
+
+        public virtual UserLevel LEVEL
+        {
+            get { return Level; }
+            set { Level = value; }
+        }
+
+        public enum UserLevel
+        {
+            Junior,
+            Middle,
+            Senior
         }
 
         public User()
