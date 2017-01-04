@@ -18,19 +18,19 @@ namespace TestingNHiber.Domain
         public virtual string LOGIN
         {
             get { return Login; }
-            protected set { Login = value; }
+            set { Login = value; }
         }
 
         public virtual string FULLNAME
         {
             get { return FullName; }
-            protected set { FullName = value; }
+            set { FullName = value; }
         }
 
         public virtual string PASSWORD
         {
             get { return Password; }
-            protected set { Password = value; }
+            set { Password = value; }
         }
 
         public User()

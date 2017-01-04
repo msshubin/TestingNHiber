@@ -3,6 +3,6 @@
 	[Id] INT IDENTITY (1, 1) NOT NULL,
 	[Login] NVARCHAR(MAX) NOT NULL, 
     [FullName] NVARCHAR(MAX) NULL, 
-    [Password] NCHAR(20) NULL,
+    [Password] NVARCHAR(MAX) NULL,
 	CONSTRAINT [PK_dbo.Users] PRIMARY KEY CLUSTERED ([Id] ASC)
 )

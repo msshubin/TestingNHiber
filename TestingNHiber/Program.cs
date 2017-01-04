@@ -51,6 +51,19 @@ namespace TestingNHiber
                 Console.WriteLine(usr.ID + " " + usr.LOGIN + " " + usr.FULLNAME + " " + usr.PASSWORD);
             }
 
+            // Теперь вытащим определенную запись из таблицы и обновим ее
+            tr = session.BeginTransaction();
+            Console.WriteLine("There are user with id 3: ");
+            var oneuser = session.Get<User>(3);
+            Console.WriteLine(oneuser.ID + " " + oneuser.LOGIN + " " + oneuser.FULLNAME + " " + oneuser.PASSWORD);
+            Console.WriteLine("Add to end of fullname of {0} some characters ' - best user': ", oneuser.LOGIN);
+            oneuser.FULLNAME += " - best user";
+            session.Update(oneuser);
+
+            tr.Commit();
+
+
+
             // Завершаем работу с базой.
             session.Clear();
             Dom.Close();
