@@ -3,14 +3,21 @@
   <Class Name="TestingNHiber.Domain.Document">
     <Position X="2.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAACAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <HashCode>QAACAAAAAAAAgAAEgAAAAgQAAAAAAAAAAAAAAABAAEA=</HashCode>
       <FileName>Domain\Document.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TestingNHiber.Domain.User">
     <Position X="4.5" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TestingNHiber.Domain.User.UserLevel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Domain\User.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAIAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <HashCode>AACCAAABAAAAkIACAAAAAAAAAAAAAAADAAAQAAAAAAA=</HashCode>
       <FileName>Domain\User.cs</FileName>
     </TypeIdentifier>
   </Class>

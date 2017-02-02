@@ -8,5 +8,6 @@
     <property name="CreationDate" />
     <property name="Author" />
     <property name="FileName" />
+    
   </class>
 </hibernate-mapping>

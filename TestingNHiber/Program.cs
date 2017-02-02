@@ -9,8 +9,9 @@ namespace TestingNHiber
     {
         static void Main(string[] args)
         {
-            // Add new account
-            Console.Write("Enter login: ");
+
+            #region Add new account
+/*            Console.Write("Enter login: ");
             string login = Console.ReadLine();
 
             Console.Write("Enter your fullname: ");
@@ -23,6 +24,8 @@ namespace TestingNHiber
 
             // Создаем экземпляр класса User
             User user = new User(login, fullname, password);
+*/
+            #endregion
 
             // Иницивализация домена
             Dom.Init();
@@ -34,24 +37,20 @@ namespace TestingNHiber
             ITransaction tr = session.BeginTransaction();
 
             // Сохрананяем объект в сессии
-            session.Save(user);
+            //session.Save(user);
 
             // Завершаем транзакцию. Сейчас данные будут физически записаны в БД
             // После этого можно отрыть таблицу в БД и убедиться, что там действительно появилаь новая запись
-            tr.Commit();
-            session.Flush();
+            //            tr.Commit();
+            //            session.Flush();
 
             // Очищаем кэш сессии, чтобы быть уверенными, что объект будет получен из базы, а не из сессии
-            session.Clear();
+            //            session.Clear();
 
-            Console.WriteLine("There are all users in the base: ");
-            var allusers = session.QueryOver<User>();
-            foreach (var usr in allusers.List())
-            {
-                Console.WriteLine(usr.ID + " " + usr.LOGIN + " " + usr.FULLNAME + " " + usr.PASSWORD);
-            }
+            //ShowAllUsers(session);
 
-            // Теперь вытащим определенную запись из таблицы и обновим ее
+            #region Теперь вытащим определенную запись из таблицы и обновим ее
+            /*
             tr = session.BeginTransaction();
             Console.WriteLine("There are user with id 3: ");
             var oneuser = session.Get<User>(2);
@@ -63,14 +62,47 @@ namespace TestingNHiber
             // session.Delete(oneuser); // if we need to delete founded record
 
             tr.Commit();
+            */
+            #endregion
 
-
+            AddDocument(session, "Новый документ 1", DateTime.Now, "документ1.doc", 1);
+            AddDocument(session, "Новый документ 2", DateTime.Now, "документ2.doc", 2);
+            AddDocument(session, "Новый документ 3", DateTime.Now, "документ3.doc", 3);
 
             // Завершаем работу с базой.
+            tr.Commit();
             session.Clear();
             Dom.Close();
 
-            Console.ReadKey();
+            
+            //Console.ReadKey();
         }
+
+        static void ShowAllUsers(ISession session)
+        {
+            Console.WriteLine("There are all users in the base: ");
+            var allusers = session.QueryOver<User>();
+            foreach (var usr in allusers.List())
+            {
+                //Console.WriteLine(usr.ID + " " + usr.LOGIN + " " + usr.FULLNAME + " " + usr.PASSWORD + " " + usr.LEVEL);
+                Console.WriteLine("{0} \t{1} \t {2} \t {3}",
+                    usr.ID,
+                    usr.LOGIN,
+                    usr.FULLNAME,
+                    usr.LEVEL);
+            }
+        }
+
+        static void AddDocument(ISession session, string Name, DateTime CreationDate, string FileName, int UsersId)
+        {
+            IQuery query = session.CreateSQLQuery("exec AddDocument :Name, :CreationDate, :FileName, :UsersId");
+            query.SetParameter("Name", Name);
+            query.SetParameter("CreationDate", CreationDate);
+            query.SetParameter("FileName", FileName);
+            query.SetParameter("UsersId", UsersId);
+            object obj = query.UniqueResult();
+
+        }
+
     }
 }

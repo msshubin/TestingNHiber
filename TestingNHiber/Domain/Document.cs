@@ -10,13 +10,7 @@ namespace TestingNHiber.Domain
         private User Author { get; set; }            // Автор документа, объект пользователь
         private string FileName { get; set; }        // Имя файла
 
-/*        private long Id;                // Уникальный идентификатор
-        private string Name;            // Название документа
-        private DateTime CreationDate;  // Дата создания документа
-        private User Author;            // Автор документа, объект пользователь
-        private string FileName;        // Имя файла
-
-        public virtual long ID
+        public virtual int ID
         {
             get { return Id; }
             protected set { Id = value; }
@@ -45,6 +39,14 @@ namespace TestingNHiber.Domain
             get { return FileName; }
             protected set { FileName = value; }
         }
-            */
+
+        public Document(string setName, DateTime setCreationDate, User setAuthor, string setFileName)
+        {
+            Name = setName;
+            CreationDate = setCreationDate;
+            Author = setAuthor;
+            FileName = setFileName;
+        }
+            
     }
 }
